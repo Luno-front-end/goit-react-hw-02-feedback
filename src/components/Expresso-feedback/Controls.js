@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Controls({ options, onLeaveFeedback }) {
+export default function Controls({ options, onLeaveFeedback}) {
        const btnMap = Object.keys(options);
     return (<div>
        
@@ -12,16 +12,11 @@ export default function Controls({ options, onLeaveFeedback }) {
                 type="button"
                 onClick={onLeaveFeedback}
             >
-                {item[0].toUpperCase() + item.slice(1)}
-                {/* { btnMap.toUpperCase() + btnMap.slice(1) } */}
+                {item}
+                {/* {a.map(name => name)} */}
             </button>
           ))}
         </div>)
-    // (<div> 
-    //     <button type="button" onClick={onUpdateGood}>Добре</button>
-    //       <button type="button" onClick={onUpdateNeutral}>Нейтрально</button>
-    //       <button type="button" onClick={onUpdateBad}>Погано</button>
-    // </div>)
-
+   
      
 }
