@@ -3,19 +3,20 @@ import Section from "./Section";
 import Controls from "./Controls";
 import Statistics from "./Statistics";
 
+import s from "./Feedback.module.css";
+
 export default class Feedback extends React.Component {
   static defaultProps = {
     initialValue: 0,
   };
 
   state = {
-    good: this.props.initialValue,
-    neutral: this.props.initialValue,
-    bad: this.props.initialValue,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   handleCLick = (e) => {
-    // const { data } = this.props;
     const { name } = e.currentTarget;
     this.setState((prevState) => {
       return {
@@ -28,18 +29,16 @@ export default class Feedback extends React.Component {
     return this.state.good + this.state.bad + this.state.neutral;
   };
   countPositiveFeedbackPercentage = () => {
-  return  Math.round((this.state.good * 100) / this.countTotalFeedback());
+    return Math.round((this.state.good * 100) / this.countTotalFeedback());
   };
 
   render() {
     return (
-      <div>
+      <div className={s.container}>
         <Section title="Будь ласка залишіть свій відгук">
-          <Controls options={this.state}
-            // a={"da", "ni", "tu"}
-            onLeaveFeedback={this.handleCLick} />
+          <Controls options={this.state} onLeaveFeedback={this.handleCLick} />
         </Section>
-        <Section title="Статистика">          
+        <Section title="Статистика">
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -52,5 +51,3 @@ export default class Feedback extends React.Component {
     );
   }
 }
-
-
