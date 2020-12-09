@@ -7,7 +7,7 @@ export default function Controls({ options, onLeaveFeedback }) {
   const btnMap = Object.keys(options);
   return (
     <div>
-      {btnMap.map((item) => (
+      {btnMap.map((item, ind) => (
         <button
           key={Math.random(3)}
           name={item}
@@ -15,7 +15,7 @@ export default function Controls({ options, onLeaveFeedback }) {
           onClick={onLeaveFeedback}
           className={s.btn}
         >
-          {item[0].toUpperCase() + item.slice(1)}
+          {["Добре", "Нейтрально", "Погано"][ind]}
         </button>
       ))}
     </div>
